@@ -1,0 +1,61 @@
+<!-- ngIf la an hien component
+
+<p > Hello Angular</p>
+<p>Hello</p>
+<button (click)="isActive=!isActive">Toggle</button>
+
+<!-- view khi da login -->
+<!-- <div *ngIf="isLogin">
+  <button (click)="isLogin=false">Login</button>
+</div> -->
+<!-- view khi chua login -->
+<!-- <div *ngIf="!isLogin">
+  <button (click)="isLogin=true">Login</button>
+</div> -->
+<!-- view khi da login -->
+<!-- <div *ngIf="!isLogin">
+  <button (click)="isLogin=true">LogOut</button>
+</div> -->
+<!-- view khi chua login -->
+<!-- <div *ngIf="isLogin">
+  <button (click)="isLogin=false">LogOut</button>
+</div> -->
+
+<!-- ng template  a component do angular dinhj nghiax san mac dinh noi dung ben trong ng-template se khong dc render ra giao dien no cse chi dc render khi minh goi toi no -->
+<div [ngSwitch]="color">
+  <p *ngSwitchCase="'primary'" class="bg-primary">primary</p>
+  <p *ngSwitchCase="'pecondary'" class="bg-secondary">secondary</p>
+  <p *ngSwitchCase="'danger'" class="bg-danger">danger</p>
+  <p *ngSwitchCase="'success'" class="bg-success">success</p>
+  <p *ngSwitchDefault>default</p>
+
+</div>
+<select [(ngModel)]="color">
+  <option value="primary">primary</option>
+  <option value="danger">danger</option>
+  <option value="success">success</option>
+
+</select>
+
+
+<div class="container">
+<p *ngFor="let sv of dssv; let idx=index;count as total">
+ {{idx}}/{{total}}--{{sv.hoten}},{{sv.lop}}
+</p>
+</div>
+<!-- khong the de 2 structuraldirective treen  cung 1 the -->
+<!-- ng container :the nay se ko dc render ra giao dien -->
+<ng-container *ngIf="dssv">
+  <p *ngFor="let sv of dssv; let idx=index;count as total">
+    {{idx}}/{{total}}--{{sv.hoten}},{{sv.lop}}
+   </p>
+</ng-container>
+<!-- ng-templaeOutlet :ket hop giua ng template va  ng container de taisu dung -->
+<ng-template #errotemplate>
+  <div class="alert alert-danger" role="alert">
+    <strong>Sth wrong</strong>
+</div>
+</ng-template>
+<ng-container *ngTemplateOutlet="errotemplate" ></ng-container>
+<ng-container *ngTemplateOutlet="errotemplate" ></ng-container>
+<ng-container *ngTemplateOutlet="errotemplate" ></ng-container>

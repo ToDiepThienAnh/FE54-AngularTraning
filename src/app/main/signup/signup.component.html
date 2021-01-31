@@ -1,0 +1,79 @@
+<h1 class="text-center">Sign Up</h1>
+
+<!-- 
+signupForm.value => 
+{
+    taiKhoan: '123',
+    ....
+} -->
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 mx-auto">
+            <form #signupForm="ngForm" (ngSubmit)="handleSignup()">
+                <div class="form-group">
+                    <label>Tài khoản</label>
+                    <input type="text" name="taiKhoan" #taiKhoan="ngModel" ngModel class="form-control" required
+                        minlength="3" maxlength="20">
+                    <!-- [class]="" -->
+                </div>
+                <!-- ngModel cung cấp object error
+                taiKhoan.errors => required/minlength/maxlength/pattern: true/false -->
+                <div *ngIf="taiKhoan.invalid && (taiKhoan.dirty || taiKhoan.touched)" class="alert alert-danger">
+
+                    <span *ngIf=" taiKhoan.errors?.required">Tài khoản không được để trống</span>
+                    <span *ngIf=" taiKhoan.errors?.minlength || taiKhoan.errors?.maxlength ">Tài khoản phải từ 3 đến 20
+                        ký
+                        tự</span>
+                </div>
+
+                <div class="form-group">
+                    <label>Mật Khẩu</label>
+                    <input type="text" name="matKhau" ngModel class="form-control" #matKhau="ngModel" required>
+
+                </div>
+                <div *ngIf="matKhau.invalid && (matKhau.dirty || matKhau.touched)" class="alert alert-danger">
+
+                    <span *ngIf=" matKhau.errors?.required">Mật Khẩu không được để trống</span>
+                    <!-- <span *ngIf=" taiKhoan.errors?.minlength || taiKhoan.errors?.maxlength ">Tài khoản phải từ 3 đến 20 ký
+                        tự</span> -->
+                </div>
+                <div class="form-group">
+                    <label>Họ Tên</label>
+                    <input type="text" name="hoTen" ngModel class="form-control" #hoTen="ngModel" required>
+
+                </div>
+                <div *ngIf="hoTen.invalid && (hoTen.dirty || hoTen.touched)" class="alert alert-danger">
+
+                    <span *ngIf=" hoTen.errors?.required">Họ tên không được để trống</span>
+                    <!-- <span *ngIf=" taiKhoan.errors?.minlength || taiKhoan.errors?.maxlength ">Tài khoản phải từ 3 đến 20 ký
+                        tự</span> -->
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" name="email" ngModel class="form-control" required #email="ngModel"
+                        pattern='[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$'>
+
+                </div>
+                <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+
+                    <span *ngIf=" email.errors?.required">Họ tên không được để trống</span>
+                    <span *ngIf=" email.errors?.pattern ">Email không đúng định dạng</span>
+                </div>
+                <div class="form-group">
+                    <label>Số Điện Thoại</label>
+                    <input type="tel" name="soDt" ngModel class="form-control" required #soDt="ngModel">
+
+                </div>
+                <div *ngIf="soDt.invalid && (soDt.dirty || soDt.touched)" class="alert alert-danger">
+
+                    <span *ngIf=" soDt.errors?.required">Số điện thoại không được để trống</span>
+
+                </div>
+                <button [disabled]="signupForm.invalid" class="btn btn-success">Đăng ký</button>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="col-3">
+    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+    <h3 class="ml-3">Movie</h3>
+      <a routerLink="/admin/user" class="nav-link" id="v-pills-profile-tab" data-toggle="pill"  role="tab" aria-controls="v-pills-profile" aria-selected="false">User</a>
+      <a routerLink="/admin/movie"  class="nav-link" id="v-pills-messages-tab" data-toggle="pill"  role="tab" aria-controls="v-pills-messages" aria-selected="false">Movie</a>
+
+    </div>
+  </div>
+  <div class="col-9">
+    <div class="tab-content" id="v-pills-tabContent">
+     <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

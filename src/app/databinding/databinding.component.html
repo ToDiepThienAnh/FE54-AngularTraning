@@ -1,0 +1,18 @@
+<!-- interpolation -->
+
+<p>{{message}}</p>
+<input readonly value={{message}} />
+<!-- property bindind  -->
+<input [value]="message"  id="txtMassage" #massageRef />
+<!-- #massageRef gionsg nhu dom  -->
+<!-- event  binding -->
+<button (click)="handleChangeMessage(massageRef)">click</button>
+<p>{{userName}}</p>
+<input [value] ="userName" (input)="handleChangeUsername($event)" />
+<input [value] ="userName" (change)="handleChangeUsername($event)" />
+<!-- two way binding  -->
+<br/>
+<p>{{email}}</p>
+<input [(ngModel)]="email" />
+<br/>
+<!-- <input [value]="email" (input)="email= $event.target.value" /> -->

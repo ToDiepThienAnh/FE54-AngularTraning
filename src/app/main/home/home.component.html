@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <p *ngIf="loading">Loading...</p>
+    <p *ngIf="error">{{error}}</p>
+    <div *ngFor="let movie of movieList | slice: 0:8" class="col-sm-3">
+      <mat-card>
+        <img mat-card-image style="height: 150px ;width: 100;" [src]="movie.hinhAnh" alt="">
+        <div mat-card-content>
+          <!-- <h4 class="card-title">{{movie.tenPhim | uppercase}}</h4> -->
+          <h4 class="card-title">{{movie.tenPhim | lowercase}}</h4>
+
+          <!-- <pre class="card-text"> {{movie | json }}</pre> -->
+          <pre class="card-text"> {{movie.ngayKhoiChieu | date: "dd/mm/yyyy" }}</pre>
+
+
+
+          <p class="card-text">{{movie.ngayKhoiChieu}}</p>
+          <p class="card-text">{{movie.moTa | shortcut: 50}}</p>
+          <button mat-raised-button color="warn" routerLink="/movie/{{movie.maPhim}}">Chi Tiết</button>
+        </div>
+      </mat-card>
+
+    </div>
+  </div>
+</div>
